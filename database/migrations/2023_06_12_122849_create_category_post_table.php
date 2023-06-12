@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('category_post', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\Category::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Post::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
