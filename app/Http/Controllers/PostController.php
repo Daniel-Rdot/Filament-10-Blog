@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use Illuminate\Support\Carbon;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $posts = Post::query()
+            ->where('active', '=', 1)
+            ->whereDate('published_at', '<', Carbon::now())
+            ->orderBy('published_at', 'desc')
+            ->paginate(5);
+        return view("home", compact('posts'));
     }
 
     /**
