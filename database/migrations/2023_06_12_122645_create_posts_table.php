@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->string('thumbnail', 2048)->nullable();
             $table->longText('body');
             $table->boolean('active');
-            $table->dateTime('published_at');
+            $table->dateTime('published_at')->nullable();
             $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
