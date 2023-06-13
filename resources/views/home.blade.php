@@ -6,7 +6,7 @@
             <x-post-item :post="$post"></x-post-item>
         @endforeach
 
-        {{ $posts->links() }}
+        {{ $posts->onEachSide(1)->links() }}
 
     </section>
 </x-app-layout>
